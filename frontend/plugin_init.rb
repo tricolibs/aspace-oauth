@@ -34,7 +34,8 @@ Rails.application.config.middleware.use OmniAuth::Builder do
         end
       end
     end
-    provider oauth_definition[:provider], config
+    provider_type = oauth_definition[:provider_type] || oauth_definition[:provider]
+    provider provider_type, config
     $stdout.puts "REGISTERED OAUTH PROVIDER WITH CONFIG: #{config}"
   end
 end
